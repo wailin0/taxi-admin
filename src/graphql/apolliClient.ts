@@ -28,9 +28,11 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 const createApolloClient = () => {
   const authLink = setContext(async (_, { headers }) => {
     try {
+      const token = window.localStorage.getItem('token')
       return {
         headers: {
           ...headers,
+          "Authorization": `Bearer ${token}`,
           "x-hasura-admin-secret":
             "myadminsecretkey",
         },

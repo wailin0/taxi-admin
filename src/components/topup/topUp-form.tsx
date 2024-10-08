@@ -25,11 +25,10 @@ const formContainer =
 
 export const TopUpForm: React.FC<UserFormType> = ({ editData, toggle }) => {
   const [checkReceipt, setCheckReceipt] = useState(false);
-  const [updateService, ] = useMutation(UPDATE_AMOUNT, {
+  const [updateService] = useMutation(UPDATE_AMOUNT, {
     refetchQueries: [GET_ALL_TOPUPS],
   });
 
-  console.log("hello this is me");
 
   const FormSchema = yup.object({
     id: yup.string(),
@@ -61,13 +60,12 @@ export const TopUpForm: React.FC<UserFormType> = ({ editData, toggle }) => {
   const handleOnSave = async (data: any) => {
     await updateService({
       variables: {
-        id: data?.id,
+        driver_transaction_id: data?.id,
         amount: data?.amount,
-        status: "completed",
+        accepted: data.approve === "yes",
       },
     });
-
-    toggle();
+    alert("top up success")
   };
 
   return (
