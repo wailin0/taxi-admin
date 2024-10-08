@@ -1,5 +1,5 @@
 import { ColumnDef } from "@tanstack/react-table";
-import { cn, getRelativeTime } from "../../lib/utils";
+import { cn } from "../../lib/utils";
 import { useBoolean } from "usehooks-ts";
 import { useNavigate } from "react-router-dom";
 import { AlignEndHorizontal } from "lucide-react";
@@ -151,7 +151,7 @@ export const columns: ColumnDef<Trips>[] = [
 
       const navigate = useNavigate();
 
-     
+
 
       const {  toggle } = useBoolean(false);
 
