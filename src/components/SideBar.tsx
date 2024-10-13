@@ -21,7 +21,7 @@ export const SideBar = () => {
   const MENUS = useMenus();
 
   const handleLogOut = () => {
-    window.localStorage.removeItem("login");
+    window.localStorage.removeItem("token");
     navigate("/"); // This will now work correctly
   };
 
@@ -40,7 +40,7 @@ export const SideBar = () => {
           variant={"outline"}
         >
           <img src={LOGO} className="w-[20px] h-[20px]" alt="logo" />
-         
+
         </Button>
         {
             open && <p className=" italic font-semibold text-sm">Go Tuk Tuk</p>
