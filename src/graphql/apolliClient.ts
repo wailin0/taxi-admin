@@ -32,9 +32,7 @@ const createApolloClient = () => {
       return {
         headers: {
           ...headers,
-          "Authorization": `Bearer ${token}`,
-          "x-hasura-admin-secret":
-            "myadminsecretkey",
+          "Authorization": `Bearer ${token}`
         },
       };
     } catch (e) {
