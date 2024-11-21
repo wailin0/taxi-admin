@@ -26,15 +26,22 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 });
 
 const createApolloClient = () => {
-  const authLink = setContext(async (_, { headers }) => {
+
+  const authLink = setContext(async (_, {headers}) => {
     try {
       const token = window.localStorage.getItem('token')
-      return {
-        headers: {
-          ...headers,
-          "Authorization": `Bearer ${token}`
-        },
-      };
+      if (token) {
+        return {
+          headers: {
+            ...headers,
+            Authorization: `Bearer ${token}`,
+          },
+        };
+      } else {
+        return {
+          headers,
+        };
+      }
     } catch (e) {
       return {
         headers,
